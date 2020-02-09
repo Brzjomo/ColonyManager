@@ -6,6 +6,7 @@
   <FM.Manage>添加！</FM.Manage>
   <FM.Delete>删除</FM.Delete>
   <FM.All>全部</FM.All>
+  <FM.TabDisabledBecause>(禁用：{0})</FM.TabDisabledBecause>
 
   <!-- Help and alert messages for the lexically challenged. -->
   <FM.HelpTitle>殖民地管理 V2</FM.HelpTitle>
@@ -16,12 +17,23 @@
   <FM.AlertNoManager>管理目标已设定，但没有已指派「管理」工作的殖民者。</FM.AlertNoManager>
 
   <!-- Common -->
-  <FM.LastUpdateTooltip>此项工作更新于{0}之前。</FM.LastUpdateTooltip>
+  <FM.LastUpdateTooltip>此项工作更新于{0}之前，并计划每{1}更新一次。\n\n点击以改变更新间隔。</FM.LastUpdateTooltip>
   <FM.OrderUp>提升工作优先级</FM.OrderUp>
   <FM.OrderDown>降低工作优先级</FM.OrderDown>
   <FM.OrderTop>最高优先级</FM.OrderTop>
   <FM.OrderBottom>最低优先级</FM.OrderBottom>
   <multiple>[多种]</multiple>
+  <FM.Threshold>阈值</FM.Threshold>
+  <FM.CheckReachability>检查目标是否能够到达</FM.CheckReachability>
+  <FM.CheckReachability.Tip>在创建指定前计算是否有路径能够到达目标。</FM.CheckReachability.Tip>
+  <FM.Expensive.Tip>启用该项设置可能会降低性能，尤其是大地图，山区地图，有大量潜在目标的工作以及拥有大量殖民的殖民地。</FM.Expensive.Tip>
+  <FM.PathBasedDistance>基于实际路径计算距离</FM.PathBasedDistance>
+  <FM.PathBasedDistance.Tip>如果开启，距离将基于真实路径计算。如果禁用，则基于直线距离。\n\n注意：启用后，拥有大量潜在目标的工作可能导致明显的卡顿。</FM.PathBasedDistance.Tip>
+  <FM.CountAllOnMap>计算地图上的一切</FM.CountAllOnMap>
+  <FM.CountAllOnMap.Tip>如果开启，计算地图上阈值过滤器允许的所有物品。如果禁用，则只计算库存和仓储建筑中的物品。</FM.CountAllOnMap.Tip>
+  <FM.None>无</FM.None>
+  <!-- 0: target (thing), 1: distance (int), 2: yield amount (int), 3: yield type (def) -->
+  <Fluffy.Manager.DesignationLabel>{0}\n  距离：{1}\n  产量：{2}x {3}</Fluffy.Manager.DesignationLabel>
 
   <!-- time periods for update interval -->
   <FM.DefaultUpdateInterval>默认更新时间间隔</FM.DefaultUpdateInterval>
@@ -39,8 +51,10 @@
 
   <!-- Power Tab (E for energy) -->
   <FME.PeriodShown>时间段：{0}</FME.PeriodShown>
-  <FME.PeriodShownTooltip>当前显示为最后{0}的发电与耗电。\n\n点击以切换时间段。</FME.PeriodShownTooltip>
+  <FME.PeriodShownTooltip>当前显示最后{0}的发电与耗电。\n\n点击以切换时间段。</FME.PeriodShownTooltip>
   <FME.Power>电力</FME.Power>
+  <FME.NotResearched>电力管理尚未研究</FME.NotResearched>
+  <FME.NoPoweredStation>管理站点无电</FME.NoPoweredStation>
 
   <!-- Overview Tab -->
   <FM.Overview>概览</FM.Overview>
@@ -49,8 +63,9 @@
   <FM.Enabled>工作</FM.Enabled>
   <FM.Priority>工作</FM.Priority>
   <FM.ClickToJumpTo>点击跳转至{0}</FM.ClickToJumpTo>
-  <FM.JobCompletedTooltip>工作以达到阈值。</FM.JobCompletedTooltip>
-  <FM.JobSuspendedTooltip>工作已暂停。\n\n点击解除暂停状态。</FM.JobSuspendedTooltip>
+  <FM.JobCompletedTooltip>工作以达到阈值。\n\n点击以暂停该工作。</FM.JobCompletedTooltip>
+  <FM.JobSuspendedTooltip>工作已暂停。\n\n点击恢复。</FM.JobSuspendedTooltip>
+  <FM.SuspendJobTooltip>点击以暂停该工作。</FM.SuspendJobTooltip>
   <FM.PluralSuffix>s</FM.PluralSuffix>
 
   <!--Import/Export Tab-->
@@ -68,27 +83,56 @@
   <FMH.Hunting>狩猎</FMH.Hunting>
   <FMH.NewHuntingJob>新建工作</FMH.NewHuntingJob>
   <FMH.NewHuntingJobTooltip>新建狩猎工作。</FMH.NewHuntingJobTooltip>
-  <FMH.AllowHumanMeat>人肉计算在内</FMH.AllowHumanMeat>
-  <FMH.AllowInsectMeat>虫肉计算在内</FMH.AllowInsectMeat>
+  <FMH.AllowHumanMeat>计算人肉</FMH.AllowHumanMeat>
+  <FMH.AllowHumanMeat.Tip>是否计算人肉？\n\n注意：这是阈值筛选器切换人肉的快捷键，你可以在阈值详情中设置更多选项。</FMH.AllowHumanMeat.Tip>
+  <FMH.AllowInsectMeat>计算昆虫肉</FMH.AllowInsectMeat>
+  <FMH.AllowInsectMeat.Tip>是否计算昆虫肉？\n\n注意：这是阈值筛选器切换昆虫肉的快捷键，你可以在阈值详情中设置更多选项。</FMH.AllowInsectMeat.Tip>
   <FMH.UnforbidCorpses>尸体解除禁止</FMH.UnforbidCorpses>
-  <FMH.HuntingGrounds>允许狩猎于：</FMH.HuntingGrounds>
-  <FMH.Options>选项</FMH.Options>
+  <FMH.UnforbidCorpses.Tip>自动解禁（新鲜的）捕猎的动物尸体。</FMH.UnforbidCorpses.Tip>
   <FMH.Animals>允许的动物</FMH.Animals>
   <FMH.TargetCount>目标计数：{0}+{1}+{2}/{3}</FMH.TargetCount>
-  <FMH.TargetCountTooltip>目标：{3}\n储存{0}\n屠宰预期{1}\n当前命令预期{2}。</FMH.TargetCountTooltip>
+  <FMH.TargetCountTooltip>目标：{3}\n{0} 在库中\n{1} 预期来自动物屠宰\n{2} 预期来自当前指定</FMH.TargetCountTooltip>
+  <FM.Hunting.Predators>食肉动物</FM.Hunting.Predators>
+  <FM.Hunting.Predators.Tip>切换所有食肉动物</FM.Hunting.Predators.Tip>
+  <FM.Hunting.HerdAnimals>畜群动物</FM.Hunting.HerdAnimals>
+  <FM.Hunting.HerdAnimals.Tip>切换所有畜群动物</FM.Hunting.HerdAnimals.Tip>
+  <FM.Hunting.Exploding>爆炸动物</FM.Hunting.Exploding>
+  <FM.Hunting.Exploding.Tip>切换所有爆炸动物</FM.Hunting.Exploding.Tip>
+  <FM.Hunting.AreaRestriction>限制捕猎于</FM.Hunting.AreaRestriction>
 
   <!-- Forestry Tab -->
   <FMF.Forestry>林业</FMF.Forestry>
   <FMF.NewForestryJob>新建工作</FMF.NewForestryJob>
   <FMF.NewForestryJobTooltip>新建林业工作。</FMF.NewForestryJobTooltip>
   <FMF.Options>选项</FMF.Options>
-  <FMF.Trees>允许树木</FMF.Trees>
   <FMF.ClearWindCells>清理风力发电机区域</FMF.ClearWindCells>
+  <FMF.ClearWindCells.Tip>清除风力发电机区域中的所有单元。</FMF.ClearWindCells.Tip>
   <FMF.AllowSaplings>允许砍伐未完全成熟的树木</FMF.AllowSaplings>
-  <FMF.LoggingArea>允许伐木于：</FMF.LoggingArea>
+  <FMF.AllowSaplings.Tip>是否只砍伐完全成熟的树木？</FMF.AllowSaplings.Tip>
+  <FMF.LoggingArea>限制伐木于：</FMF.LoggingArea>
   <FMF.TargetCount>目标计数{0}+{1}/{2}</FMF.TargetCount>
-  <FMF.TargetCountTooltip>目标：{2}\n储存{0}\n当前命令预期{1}。</FMF.TargetCountTooltip>
+  <FMF.TargetCountTooltip>目标：{2}\n{0} 在库中\n{1} 预期来自当前指定</FMF.TargetCountTooltip>
   <FMF.ClearAreas>清除区域内的所有植物：</FMF.ClearAreas>
+  <FMF.JobType>工作类型</FMF.JobType>
+  <FMF.JobType.ClearArea>清空区域</FMF.JobType.ClearArea>
+  <FMF.JobType.ClearArea.Tip>清空区域以保证风力发电机平滑运行，并不给敌人留下任何可能的掩护。</FMF.JobType.ClearArea.Tip>
+  <FMF.JobType.Logging>伐木</FMF.JobType.Logging>
+  <FMF.JobType.Logging.Tip>砍树收集木材</FMF.JobType.Logging.Tip>
+
+  <FMF.Clear>清空 {0}</FMF.Clear>
+  <FMF.TurbineArea>风力发电机</FMF.TurbineArea>
+
+  <FMF.Trees>树木</FMF.Trees>
+  <FMF.Trees.Tip>选择所有树木</FMF.Trees.Tip>
+  <FMF.Flammable>易燃</FMF.Flammable>
+  <FMF.Flammable.Tip>选择所有易燃的植物</FMF.Flammable.Tip>
+  <FMF.Ugly>丑陋</FMF.Ugly>
+  <FMF.Ugly.Tip>选择所有丑陋的植物</FMF.Ugly.Tip>
+  <FMF.ProvidesCover>掩护</FMF.ProvidesCover>
+  <FMF.ProvidesCover.Tip>选择所有提供掩护的植物</FMF.ProvidesCover.Tip>
+  <FMF.BlocksWind>挡风</FMF.BlocksWind>
+  <FMF.BlocksWind.Tip>选择所有挡风的植物</FMF.BlocksWind.Tip>
+
 
   <!-- Foraging (Gathering) tab -->
   <FMG.Foraging>采集</FMG.Foraging>
@@ -96,12 +140,116 @@
   <FMG.NewForagingJobTooltip>新建采集工作。</FMG.NewForagingJobTooltip>
   <FMG.Options>选项</FMG.Options>
   <FMG.TargetCount>目标计数：{0}+{1}/{2}</FMG.TargetCount>
-  <FMG.TargetCountTooltip>目标：{2}\n储存{0}\n当前命令预期{1}。</FMG.TargetCountTooltip>
-  <FMG.ForceMature>只允许完全成熟的植物。</FMG.ForceMature>
-  <FMG.ForagingArea>允许采集于：</FMG.ForagingArea>
+  <FMG.TargetCountTooltip>目标：{2}\n{0} 在库中\n{1} 预期来自当前指定</FMG.TargetCountTooltip>
+  <FMG.ForceMature>只允许完全成熟的植物</FMG.ForceMature>
+  <FMG.ForceMature.Tip>是否只采集完全成熟的植物？</FMG.ForceMature.Tip>
+  <FMG.ForagingArea>限制采集于：</FMG.ForagingArea>
   <FMG.Plants>允许植物</FMG.Plants>
+  <FM.Foraging.Edible>可食用植物</FM.Foraging.Edible>
+  <FM.Foraging.Edible.Tip>选择所有可食用植物</FM.Foraging.Edible.Tip>
+  <FM.Foraging.Mushrooms>蘑菇</FM.Foraging.Mushrooms>
+  <FM.Foraging.Mushrooms.Tip>选择所有蘑菇</FM.Foraging.Mushrooms.Tip>
+  <FM.Foraging.SyncFilterAndAllowed>同步阈值</FM.Foraging.SyncFilterAndAllowed>
+  <FM.Foraging.SyncFilterAndAllowed.Tip>启用后将尝试与允许采集的植物同步阈值筛选器中的材料计数。</FM.Foraging.SyncFilterAndAllowed.Tip>
 
 
+  <!-- Thresholds -->
+  <FMP.ThresholdCount>阈值：{0}/{1}</FMP.ThresholdCount>
+  <FMP.ThresholdCountTooltip>点击打开阈值详情。\n\n目标：{1}\n{0} 生产中</FMP.ThresholdCountTooltip>
+  <FMP.ThresholdDetails>阈值详情</FMP.ThresholdDetails>
+
+  <!-- Tab headers -->
+  <FMP.Current>当前</FMP.Current>
+  <FMP.Available>可用</FMP.Available>
+
+  <!-- Livestock tab -->
+  <FML.Livestock>牲畜</FML.Livestock>
+  <FML.TargetCounts>目标计数</FML.TargetCounts>
+  <FML.Adult>成年</FML.Adult>
+  <FML.Juvenile>幼崽</FML.Juvenile>
+  <FML.Training>训练中</FML.Training>
+  <FML.RestrictToArea>限制动物到区域中？</FML.RestrictToArea>
+  <FML.RestrictToArea.Tip>限制动物在一个指定区域，可根据性别与生长阶段划分</FML.RestrictToArea.Tip>
+  <FML.ButcherExcess>屠宰过剩的牲畜</FML.ButcherExcess>
+  <FML.ButcherExcess.Tip>是否屠宰多余的牲畜收集肉？</FML.ButcherExcess.Tip>
+  <FML.ButcherTrained>已训练的</FML.ButcherTrained>
+  <FML.ButcherTrained.Tip>是否允许屠宰已训练的牲畜？</FML.ButcherTrained.Tip>
+  <FML.ButcherPregnant>怀孕的</FML.ButcherPregnant>
+  <FML.ButcherPregnant.Tip>是否允许屠宰已怀孕的牲畜？</FML.ButcherPregnant.Tip>
+  <FML.ButcherBonded>有主人的</FML.ButcherBonded>
+  <FML.ButcherBonded.Tip>是否允许屠宰有主人的动物？</FML.ButcherBonded.Tip>
+  <FML.TameMore>自动指定要驯服的动物</FML.TameMore>
+  <FML.TameMore.Tip>是否自动指定并训练野生动物？</FML.TameMore.Tip>
+  <FML.TameArea>允许驯服于：</FML.TameArea>
+  <FML.ListEntryTooltip>{0}：\n{1}/{5} 成年雌性\n{2}/{6} 成年雄性\n{3}/{7} 未成年雌性\n{4}/{8} 未成年雄性</FML.ListEntryTooltip>
+  <FML.TameWildCount>{0} 已驯服，{1} 野生</FML.TameWildCount>
+  <FML.NoAnimals>没有 {0} {1}</FML.NoAnimals>
+  <FML.GenderHeader>性别</FML.GenderHeader>
+  <FML.AgeHeader>年龄（生长阶段）</FML.AgeHeader>
+  <FML.MeatHeader>屠宰预期产肉量</FML.MeatHeader>
+  <FML.MilkHeader>到下次挤奶的进度</FML.MilkHeader>
+  <FML.WoolHeader>到下次剪毛的进度</FML.WoolHeader>
+  <FML.Yields>预期收获{0} x{1}</FML.Yields>
+  <FML.UnassignTraining>取消训练</FML.UnassignTraining>
+  <FML.UnassignTraining.Tip>取消动物的训练目标</FML.UnassignTraining.Tip>
+  <FML.TrainYoung>训练动物幼崽</FML.TrainYoung>
+  <FML.TrainYoung.Tip>训练动物的幼崽</FML.TrainYoung.Tip>
+  <FML.SendToSlaughterArea>限定标记为屠宰的动物</FML.SendToSlaughterArea>
+  <FML.SendToSlaughterArea.Tip>将标记为屠宰的动物限制在一个区域。</FML.SendToSlaughterArea.Tip>
+  <FML.SendToMilkingArea>限制为准备好挤奶的动物</FML.SendToMilkingArea>
+  <FML.SendToMilkingArea.Tip>将奶水含量在 94% 以上的动物限制在一个区域。</FML.SendToMilkingArea.Tip>
+  <FML.SendToShearingArea>限制为准备好剪毛的动物</FML.SendToShearingArea>
+  <FML.SendToShearingArea.Tip>将毛发含量在 94% 以上的动物限制在一个区域。</FML.SendToShearingArea.Tip>
+  <FM.Livestock.TargetCountsHeader>目标计数</FM.Livestock.TargetCountsHeader>
+  <FM.Livestock.AreaRestrictionsHeader>区域限制</FM.Livestock.AreaRestrictionsHeader>
+  <FM.Livestock.TrainingHeader>训练</FM.Livestock.TrainingHeader>
+  <FM.Livestock.ButcherHeader>屠宰</FM.Livestock.ButcherHeader>
+  <FM.Livestock.TamingHeader>驯服</FM.Livestock.TamingHeader>
+  <FML.Tame>驯服的</FML.Tame>
+  <FML.Wild>野生的</FML.Wild>
+  <FM.Livestock.AnimalsHeader>{0} {1}</FM.Livestock.AnimalsHeader>
+  <FM.Livestock.SelectPawnKind>没有选中的工作</FM.Livestock.SelectPawnKind>
+  <FM.Livestock.DisabledBecauseSlaughterExcessDisabled>因为多余的牲畜的没有被屠宰而被禁用。</FM.Livestock.DisabledBecauseSlaughterExcessDisabled>
+  <FML.SendToTrainingArea>限制标记为训练的动物</FML.SendToTrainingArea>
+  <FML.SendToTrainingArea.Tip>将标记为训练的动物限制在一个区域。</FML.SendToTrainingArea.Tip>
+  <FM.Livestock.DisabledBecauseNoTrainingSet>因没有设置训练目标而被禁用。</FM.Livestock.DisabledBecauseNoTrainingSet>
+  <FM.Livestock.CannotTrainTooSmall>{0} 因为太小无法训练。</FM.Livestock.CannotTrainTooSmall>
+
+  <!-- following -->
+  <FM.Livestock.FollowHeader>跟随</FM.Livestock.FollowHeader>
+  <FM.Livestock.MasterDefault>分配主人</FM.Livestock.MasterDefault>
+  <FM.Livestock.MasterDefault.Tip>将动物分配给一个或一组指定的殖民，启用后可能会覆盖用户设置。</FM.Livestock.MasterDefault.Tip>
+  <FM.Livestock.RespectBonds>尊重关系</FM.Livestock.RespectBonds>
+  <FM.Livestock.RespectBonds.Tip>启用后，总是将与该殖民有关系的动物分配给该殖民。如果禁用，则忽略关系。</FM.Livestock.RespectBonds.Tip>
+  <FM.Livestock.RespectBonds.DisabledBecauseMastersNotSet>因没有指定主人或手动指定而禁用。</FM.Livestock.RespectBonds.DisabledBecauseMastersNotSet>
+  <FM.Livestock.Follow>跟随主人</FM.Livestock.Follow>
+  <FM.Livestock.Follow.Tip>设置主人跟随，启用后将覆盖用户设置。如果禁用，跟随设置可被手动指定。</FM.Livestock.Follow.Tip>
+  <FM.Livestock.FollowDrafted>征召</FM.Livestock.FollowDrafted>
+  <FM.Livestock.FollowDrafted.Tip>当主人被征召时，动物是否跟随？</FM.Livestock.FollowDrafted.Tip>
+  <FM.Livestock.FollowFieldwork>外勤</FM.Livestock.FollowFieldwork>
+  <FM.Livestock.FollowFieldwork.Tip>当主人出外勤时（比如：打猎），动物是否跟随？</FM.Livestock.FollowFieldwork.Tip>
+  <FM.Livestock.FollowTraining>跟随训练员</FM.Livestock.FollowTraining>
+  <FM.Livestock.FollowTraining.Tip>让标记为训练的动物试图跟随它们的训练员。</FM.Livestock.FollowTraining.Tip>
+  <FM.Livestock.MasterTraining>分配训练员</FM.Livestock.MasterTraining>
+  <FM.Livestock.MasterTraining.Tip>给标记为训练的动物分配训练员，启用后可能会覆盖用户设置。</FM.Livestock.MasterTraining.Tip>
+  <FM.Livestock.Master>{0} ({1})</FM.Livestock.Master> <!-- 0; pawn name, 1; skill level -->
+
+  <!-- MasterMode enum -->
+  <FM.Livestock.MasterMode.Default>手册</FM.Livestock.MasterMode.Default>
+  <FM.Livestock.MasterMode.Hunters>猎人</FM.Livestock.MasterMode.Hunters>
+  <FM.Livestock.MasterMode.Trainers>训练员</FM.Livestock.MasterMode.Trainers>
+  <FM.Livestock.MasterMode.Melee>近战</FM.Livestock.MasterMode.Melee>
+  <FM.Livestock.MasterMode.Ranged>远程</FM.Livestock.MasterMode.Ranged>
+  <FM.Livestock.MasterMode.Violent>暴力的</FM.Livestock.MasterMode.Violent>
+  <FM.Livestock.MasterMode.NonViolent>非暴力的</FM.Livestock.MasterMode.NonViolent>
+  <FM.Livestock.MasterMode.All>全部</FM.Livestock.MasterMode.All>
+
+  <!-- Right click job fail reasons -->
+  <Fluffy.ColonyManager.CannotManage.NoPower>没有电力</Fluffy.ColonyManager.CannotManage.NoPower>
+  <Fluffy.ColonyManager.CannotManage.NoJobs>没有设置工作</Fluffy.ColonyManager.CannotManage.NoJobs>
+  <Fluffy.ColonyManager.CannotManage.NoActiveJobs>所有工作已完成</Fluffy.ColonyManager.CannotManage.NoActiveJobs>
+
+  <!-- 以下可能没用 -->
   <!-- Production Tab -->
   <!-- Miscelaneous -->
   <FMP.Production>生产</FMP.Production>
@@ -124,7 +272,7 @@
 
   <!-- Thresholds -->
   <FMP.ThresholdCount>阈值：{0}/{1}</FMP.ThresholdCount>
-  <FMP.ThresholdCountTooltip>点击以打开阈值详情。\n\n目标：{1}\n生产中：{0}</FMP.ThresholdCountTooltip>
+  <FMP.ThresholdCountTooltip>点击以打开阈值详情。\n\n目标：{1}\n{0} 生产中</FMP.ThresholdCountTooltip>
   <FMP.ThresholdDetails>阈值详情</FMP.ThresholdDetails>
 
   <!-- BillGivers -->
@@ -142,10 +290,6 @@
   <FMP.SpecificWorkstations>设置工作台</FMP.SpecificWorkstations>
   <FMP.SpecificWorkstationsTooltip>将管理设为给特定的工作台指派该清单。</FMP.SpecificWorkstationsTooltip>
 
-  <!-- Tab headers -->
-  <FMP.Current>当前</FMP.Current>
-  <FMP.Available>可用</FMP.Available>
-
   <!-- Recursive job creator -->
   <FMP.IngredientDialogTitle>创建原料工作</FMP.IngredientDialogTitle>
   <FMP.SelectRecipe>选择</FMP.SelectRecipe>
@@ -161,34 +305,5 @@
   <FMP.IncreasedThreshold>将{0}的阈值提高至{1}。</FMP.IncreasedThreshold>
   <FMP.AddedJob>新建工作{0}。</FMP.AddedJob>
   <FMP.CouldNotAddJob>新建工作{0}失败。</FMP.CouldNotAddJob>
-
-  <!-- Livestock tab -->
-  <FML.Livestock>牲畜</FML.Livestock>
-  <FML.TargetCounts>目标计数</FML.TargetCounts>
-  <FML.Adult>成年</FML.Adult>
-  <FML.Juvenile>幼崽</FML.Juvenile>
-  <FML.Training>训练中</FML.Training>
-  <FML.RestrictToArea>限制动物到区域中？</FML.RestrictToArea>
-  <FML.ButcherExcess>屠宰过剩的牲畜</FML.ButcherExcess>
-  <FML.ButcherTrained>屠宰过剩的牲畜（已训练的）</FML.ButcherTrained>
-  <FML.ButcherPregnant>怀孕的</FML.ButcherPregnant>
-  <FML.ButcherBonded>牵绊的</FML.ButcherBonded>
-  <FML.TameMore>自动标记驯服动物</FML.TameMore>
-  <FML.TameArea>允许驯服于：</FML.TameArea>
-  <FML.Animals>动物</FML.Animals>
-  <FML.ListEntryTooltip>{0}：\n{1}/{5}成年雌性\n{2}/{6}成年雄性\n{3}/{7}未成年雌性\n{4}/{8}未成年雄性</FML.ListEntryTooltip>
-  <FML.TameWildCount>已驯服{0}，野外{1}</FML.TameWildCount>
-  <FML.Tame>驯服</FML.Tame>
-  <FML.Wild>野生</FML.Wild>
-  <FML.NoAnimals>没有{0}动物</FML.NoAnimals>
-  <FML.GenderHeader>性别</FML.GenderHeader>
-  <FML.AgeHeader>年龄（生命阶段）</FML.AgeHeader>
-  <FML.MeatHeader>屠宰预期产肉量</FML.MeatHeader>
-  <FML.MilkHeader>到下次挤奶的进度</FML.MilkHeader>
-  <FML.WoolHeader>到下次剪毛的进度</FML.WoolHeader>
-  <FML.Yields>收获{0} x{1}</FML.Yields>
-  <FML.TrainYoung>训练幼崽</FML.TrainYoung>
-  <FML.SendToSlaughterArea>限定为已标记为宰杀的动物</FML.SendToSlaughterArea>
-  <FML.SlaughterArea>宰杀区域</FML.SlaughterArea>
 
 </LanguageData>

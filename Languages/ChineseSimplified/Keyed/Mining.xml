@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <FM.Mining>挖矿</FM.Mining>
+    <FM.Mining.MiningArea>限制挖矿于</FM.Mining.MiningArea>
+    <FM.Mining.HealthAndSafety>健康和安全</FM.Mining.HealthAndSafety>
+    <FM.Mining.AllowedMinerals>矿物</FM.Mining.AllowedMinerals>
+    <FM.Mining.AllowedBuildings>建筑</FM.Mining.AllowedBuildings>
+    <FM.Mining.DeconstructBuildings>拆除建筑</FM.Mining.DeconstructBuildings>
+    <FM.Mining.DeconstructBuildings.Tip>是否拆除无人居住的建筑以回收资源？</FM.Mining.DeconstructBuildings.Tip>
+    <FM.Mining.CheckRoofSupport>留下屋顶支撑</FM.Mining.CheckRoofSupport>
+    <FM.Mining.CheckRoofSupport.Tip>管理者将按一定距离留下支柱。\n\n注意：支柱的距离是预计算的，塌方和屋顶坍塌依旧可能发生！</FM.Mining.CheckRoofSupport.Tip>
+    <FM.Mining.CheckRoofSupportAdvanced>检查屋顶支撑</FM.Mining.CheckRoofSupportAdvanced>
+    <FM.Mining.CheckRoofSupportAdvanced.Tip>管理者将在指定采矿和拆除任务前计算屋顶支撑，从而大大降低塌方和屋顶坍塌的风险。</FM.Mining.CheckRoofSupportAdvanced.Tip>
+    <FM.Mining.CheckRoofSupportAdvanced.DisabledTip>该项已被禁用，因为‘检查屋顶支撑’已被禁用。</FM.Mining.CheckRoofSupportAdvanced.DisabledTip>
+    <FM.Mining.CheckRoomDivision>检查房间边界</FM.Mining.CheckRoomDivision>
+    <FM.Mining.CheckRoomDivision.Tip>管理者将试着防止拆除可能分隔房间的墙壁，否则那将创建捷径。</FM.Mining.CheckRoomDivision.Tip>
+    <FM.Mining.SyncFilterAndAllowed>同步阈值</FM.Mining.SyncFilterAndAllowed>
+    <FM.Mining.SyncFilterAndAllowed.Tip>启用后将尝试与允许挖掘/拆除的岩石和建筑同步阈值筛选器中的材料计数。</FM.Mining.SyncFilterAndAllowed.Tip>
+
+    <!-- cur, chunks, designated, target -->
+    <FM.Mining.TargetCount>目标计数：{0}+{1}+{2}/{3}</FM.Mining.TargetCount>
+    <FM.Mining.TargetCount.Tip>目标：{3}\n{0} 在库中\n{1} 预期来自岩石切割\n{2} 预期来自当前指定</FM.Mining.TargetCount.Tip>
+
+    <!-- Jobs -->
+    <FM.Mining.NewJob>新工作</FM.Mining.NewJob>
+    <FM.Mining.NewJob.Tip>新建一个挖矿任务</FM.Mining.NewJob.Tip>
+
+    <!-- shortcuts -->
+    <FM.Mining.Stone>石头</FM.Mining.Stone>
+    <FM.Mining.Stone.Tip>切换所有产生石头的矿物</FM.Mining.Stone.Tip>
+    <FM.Mining.Metal>金属</FM.Mining.Metal>
+    <FM.Mining.Metal.Tip>切换所有产生金属的矿物</FM.Mining.Metal.Tip>
+    <FM.Mining.Precious>稀有矿物</FM.Mining.Precious>
+    <FM.Mining.Precious.Tip>切换所有产生珍贵材料的矿物</FM.Mining.Precious.Tip>
+</LanguageData>
